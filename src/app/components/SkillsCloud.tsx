@@ -2,6 +2,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTheme } from "./ThemeProvider";
 
 const skills = [
   { name: "TypeScript", level: 95 },
@@ -12,14 +13,15 @@ const skills = [
   { name: "Docker", level: 70 },
 ];
 
-const SkillBar = ({ name, level }: { name: string; level: number }) => {
+export const SkillBar = ({ name, level }: { name: string; level: number }) => {
   const [ref, inView] = useInView({ triggerOnce: true });
+  const { theme } = useTheme();
 
   return (
     <div className="mb-4">
-      <div className="flex justify-between mb-1 text-secondText">
-        <span>{name}</span>
-        <span>{level}%</span>
+      <div className="flex justify-between mb-2 text-secondText">
+        <span className="font-medium">{name}</span>
+        <span className="text-accents">{level}%</span>
       </div>
       <div className="h-2 bg-background rounded-full overflow-hidden">
         <motion.div
@@ -27,21 +29,30 @@ const SkillBar = ({ name, level }: { name: string; level: number }) => {
           initial={{ width: 0 }}
           animate={inView ? { width: `${level}%` } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="h-full bg-gradient-to-r from-accents to-accents/70 rounded-full"
+          className={`h-full rounded-full ${
+            theme === 'dark' 
+              ? 'bg-gradient-to-r from-accents to-accents/70'
+              : 'bg-gradient-to-r from-accents to-accents-dark'
+          }`}
         />
       </div>
     </div>
   );
 };
 
-const SkillsCloud = () => {
+export const SkillsCloud = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-sections">
       <div className="container mx-auto px-4 max-w-2xl">
-        <h3 className="text-2xl font-bold mb-8 text-center">
-          Technical Mastery
-        </h3>
-        <div className="space-y-6">
+        <motion.h3 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-text to-secondText bg-clip-text text-transparent"
+        >
+          Technical Expertise
+        </motion.h3>
+        <div className="space-y-8">
           {skills.map((skill) => (
             <SkillBar key={skill.name} {...skill} />
           ))}
@@ -50,5 +61,3 @@ const SkillsCloud = () => {
     </section>
   );
 };
-
-export default SkillsCloud;

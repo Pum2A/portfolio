@@ -1,4 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  /* Dark Theme */
+  --background: #0a0a0a;
+  --sections: #1a1a1a;
+  --accents: #FF6B6B;  /* Adjusted for better contrast */
+  --accents-dark: #CC5555;
+  --text: #ffffff;     /* Pure white for better readability */
+  --secondText: #b3b3b3;
+  --border: #404040;   /* Increased contrast */
+}
 
+[data-theme="light"] {
+  --background: #ffffff;
+  --sections: #f8f9fa;
+  --accents: #CC5555;  /* Darker shade for light mode */
+  --accents-dark: #FF6B6B;
+  --text: #1a1a1a;     /* Dark gray for better readability */
+  --secondText: #666666;
+  --border: #d4d4d4;
+}
+  /* Dodaj płynne przejścia dla motywu */
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }

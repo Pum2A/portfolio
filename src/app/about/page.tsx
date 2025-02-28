@@ -1,16 +1,18 @@
 // components/About.tsx
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { useTheme } from "../components/ThemeProvider";
+import Avatar from "../components/Avatar";
 
 const About = () => {
+  const { theme } = useTheme();
   const skills = [
-    "React",
-    "TypeScript",
-    "Node.js",
-    "AWS",
-    "GraphQL",
-    "UX Design",
+    { name: "React", category: "Frontend" },
+    { name: "TypeScript", category: "Language" },
+    { name: "Node.js", category: "Backend" },
+    { name: "AWS", category: "DevOps" },
+    { name: "GraphQL", category: "Data" },
+    { name: "Figma", category: "Design" },
   ];
 
   return (
@@ -20,63 +22,155 @@ const About = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-6xl mx-auto"
+          className="max-w-7xl mx-auto"
         >
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            {/* 3D Avatar Container */}
             <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="flex-shrink-0 relative w-64 h-64 rounded-full overflow-hidden border-4 border-accents"
+              initial={{ x: -100, opacity: 0, rotate: -5 }}
+              animate={{ x: 0, opacity: 1, rotate: 0 }}
+              transition={{ duration: 0.6, type: "spring" }}
+              className="relative group flex-shrink-0 w-72 h-72"
             >
-              <Image
-                src="/placeholder-avatar.jpg"
-                alt="Profile"
-                fill
-                className="object-cover"
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${
+                  theme === "dark"
+                    ? "from-accents/30"
+                    : "from-accents-dark/30"
+                } to-transparent rounded-3xl transform rotate-12 scale-105 opacity-50 group-hover:opacity-70 transition-opacity`}
               />
+              <div
+                className={`relative w-full h-full rounded-3xl overflow-hidden border-4 ${
+                  theme === "dark"
+                    ? "border-accents/20"
+                    : "border-accents-dark/20"
+                } hover:${
+                  theme === "dark"
+                    ? "border-accents/50"
+                    : "border-accents-dark/50"
+                } transition-all`}
+              >
+                <Avatar />
+              </div>
             </motion.div>
 
-            <div className="flex-1">
-              <motion.h2
+            {/* Content Section */}
+            <div className="flex-1 space-y-8">
+              <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-4xl font-bold mb-6 bg-gradient-to-r from-accents to-accents/70 bg-clip-text text-transparent"
+                className="space-y-6"
               >
-                About Me
-              </motion.h2>
+                <h2
+                  className={`text-5xl font-bold bg-gradient-to-r ${
+                    theme === "dark"
+                      ? "from-accents to-accents-dark"
+                      : "from-accents-dark to-accents"
+                  } bg-clip-text text-transparent`}
+                >
+                  Crafting Digital Excellence
+                </h2>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-xl text-secondText mb-8 leading-relaxed"
-              >
-                With 5+ years crafting digital experiences, I specialize in
-                building scalable web applications that combine cutting-edge
-                technology with elegant design. My passion lies in solving
-                complex problems through intuitive interfaces.
-              </motion.p>
+                <div className="space-y-6">
+                  <p className="text-xl text-secondText leading-relaxed">
+                    With over{" "}
+                    <span
+                      className={`${
+                        theme === "dark"
+                          ? "text-accents"
+                          : "text-accents-dark"
+                      }`}
+                    >
+                      5 years
+                    </span>{" "}
+                    of transforming ideas into immersive digital experiences, I
+                    specialize in building:
+                  </p>
 
+                  <ul className="grid gap-4 md:grid-cols-2">
+                    {[
+                      "Scalable web applications",
+                      "Interactive dashboards",
+                      "Cloud-native solutions",
+                      "Design systems",
+                    ].map((item, i) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 + i * 0.1 }}
+                        className="flex items-center gap-3 px-4 py-3 bg-background rounded-xl border border-border hover:border-accents/30 transition-colors"
+                      >
+                        <div
+                          className={`h-2 w-2 rounded-full ${
+                            theme === "dark"
+                              ? "bg-accents"
+                              : "bg-accents-dark"
+                          }`}
+                        />
+                        <span className="text-text">{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Skills Grid */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
                 className="grid grid-cols-2 md:grid-cols-3 gap-4"
               >
-                {skills.map((skill, i) => (
-                  <div
-                    key={skill}
-                    className="px-4 py-2 bg-background rounded-full text-center border border-accents/20 hover:border-accents/50 transition-colors"
+                {skills.map((skill) => (
+                  <motion.div
+                    key={skill.name}
+                    whileHover={{ y: -3 }}
+                    className="p-4 bg-background rounded-xl border border-border hover:border-accents/30 transition-all group"
                   >
-                    {skill}
-                  </div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-medium text-text">
+                        {skill.name}
+                      </span>
+                      <span
+                        className={`text-xs px-2 py-1 rounded-full ${
+                          theme === "dark"
+                            ? "bg-accents/10 text-accents"
+                            : "bg-accents-dark/10 text-accents-dark"
+                        }`}
+                      >
+                        {skill.category}
+                      </span>
+                    </div>
+                    <div className="h-1 bg-accents/10 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${
+                          theme === "dark"
+                            ? "bg-gradient-to-r from-accents to-accents-dark"
+                            : "bg-gradient-to-r from-accents-dark to-accents"
+                        }`}
+                        style={{ width: `${Math.random() * 40 + 60}%` }}
+                      />
+                    </div>
+                  </motion.div>
                 ))}
               </motion.div>
             </div>
           </div>
         </motion.div>
+
+        {/* Decorative Elements */}
+        <div
+          className={`absolute top-20 left-0 w-48 h-48 ${
+            theme === "dark" ? "bg-accents/10" : "bg-accents-dark/10"
+          } blur-3xl -z-10`}
+        />
+        <div
+          className={`absolute bottom-10 right-0 w-32 h-32 ${
+            theme === "dark" ? "bg-accents/10" : "bg-accents-dark/10"
+          } blur-3xl -z-10`}
+        />
       </div>
     </section>
   );

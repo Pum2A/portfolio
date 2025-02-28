@@ -1,3 +1,4 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 export default {
@@ -10,12 +11,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#1E1E1E",
-        sections: "#2C2C2C",
-        accents: "#E94560",
-        text: "#FFFFFF",
-        secondText: "#D1D5DB",
-        links: "#19C37D",
+        background: "var(--background)",
+        sections: "var(--sections)",
+        accents: "var(--accents)",
+        text: "var(--text)",
+        secondText: "var(--secondText)",
+        border: "var(--border)",
       },
       fontFamily: {
         sans: ["Montserrat", "sans-serif"],
@@ -23,17 +24,11 @@ export default {
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        gradient: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
       animation: {
-        float: "float 4s ease-in-out infinite",
-        gradient: "gradient 6s linear infinite",
+        float: "float 3s ease-in-out infinite",
       },
     },
   },
