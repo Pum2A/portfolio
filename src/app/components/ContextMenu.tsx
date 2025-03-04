@@ -2,6 +2,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
+interface FloatingLink {
+  name: string;
+  href?: string;
+  emoji: string;
+  isDropdown?: boolean;
+}
+
 const floatingLinks = [
   { name: "GitHub", href: "https://github.com/Pum2A", emoji: "🐙" },
   { name: "CV", emoji: "📄", isDropdown: true },
@@ -73,7 +80,7 @@ const ContextMenu = () => {
                 ) : (
                   <a
                     href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : "_self"}
+                    target={link.href?.startsWith("http") ? "_blank" : "_self"}
                     className="px-4 py-2 bg-sections rounded-full shadow-lg flex items-center gap-2 hover:bg-accents/20 transition-colors
                       border border-border text-text focus:outline-none focus:ring-2 focus:ring-accents"
                   >
