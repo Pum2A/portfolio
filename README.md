@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Portfolio link: https://dominikg.vercel.app/
 
-## Getting Started
+# My Portfolio Website
 
-First, run the development server:
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This repository contains the source code for my portfolio website. Built with modern web technologies, it showcases my projects, skills, and contact information in a sleek and responsive design.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contact](#contact)
+- [License](#license)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Overview
 
-## Learn More
+This portfolio site is designed to give visitors an insight into my professional work. It features a projects section with live demos and GitHub links, smooth animations, and a clean, responsive layout optimized for all devices.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Responsive Design:** Seamless experience on desktops, tablets, and mobile devices.
+- **Smooth Animations:** Enhanced user experience with Framer Motion animations.
+- **Projects Showcase:** Dedicated section for featured projects with direct links to live demos and GitHub repositories.
+- **Contact Form:** Easy-to-use form to get in touch, plus a direct email link.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technologies
 
-## Deploy on Vercel
+- **Next.js:** For building the server-rendered React application.
+- **Tailwind CSS:** Utility-first CSS framework for rapid UI development.
+- **Framer Motion:** For creating smooth, engaging animations.
+- **React Hook Form:** For efficient form management and validations.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
