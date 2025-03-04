@@ -12,9 +12,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-sections overflow-hidden">
       {/* 3D Background */}
-      <div className="absolute inset-0 h-full w-full z-0 opacity-15">
- 
-      </div>
+      <div className="absolute inset-0 h-full w-full z-0 opacity-15"></div>
 
       <motion.div
         className="relative z-10 text-center space-y-8 px-4"
@@ -43,25 +41,11 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-xl md:text-2xl text-secondText max-w-3xl mx-auto leading-relaxed"
         >
-          Crafting <span className="text-accents">next-generation</span> web experiences
-          with cutting-edge technology and pixel-perfect design
+          Crafting <span className="text-accents">next-generation</span> web
+          experiences with cutting-edge technology and pixel-perfect design
         </motion.p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-accents text-background rounded-full font-medium flex items-center gap-2 shadow-lg hover:shadow-accents/20"
-          >
-            <span>🚀 View Projects</span>
-            <motion.span 
-              animate={{ x: [-5, 5, -5] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              →
-            </motion.span>
-          </motion.button>
-        </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center"></div>
       </motion.div>
 
       {/* Scroll Indicator */}

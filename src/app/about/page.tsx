@@ -7,11 +7,11 @@ import Avatar from "../components/Avatar";
 const About = () => {
   const { theme } = useTheme();
   const skills = [
-    { name: "React", category: "Frontend" },
+    { name: "NextJS", category: "Fullstack" },
     { name: "TypeScript", category: "Language" },
-    { name: "Node.js", category: "Backend" },
-    { name: "AWS", category: "DevOps" },
-    { name: "GraphQL", category: "Data" },
+    { name: "JavaScript", category: "Language" },
+    { name: "TailwindCSS", category: "Design" },
+    { name: "SCSS", category: "Design" },
     { name: "Figma", category: "Design" },
   ];
 
@@ -34,9 +34,7 @@ const About = () => {
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${
-                  theme === "dark"
-                    ? "from-accents/30"
-                    : "from-accents-dark/30"
+                  theme === "dark" ? "from-accents/30" : "from-accents-dark/30"
                 } to-transparent rounded-3xl transform rotate-12 scale-105 opacity-50 group-hover:opacity-70 transition-opacity`}
               />
               <div
@@ -77,9 +75,7 @@ const About = () => {
                     With over{" "}
                     <span
                       className={`${
-                        theme === "dark"
-                          ? "text-accents"
-                          : "text-accents-dark"
+                        theme === "dark" ? "text-accents" : "text-accents-dark"
                       }`}
                     >
                       5 years
@@ -104,9 +100,7 @@ const About = () => {
                       >
                         <div
                           className={`h-2 w-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-accents"
-                              : "bg-accents-dark"
+                            theme === "dark" ? "bg-accents" : "bg-accents-dark"
                           }`}
                         />
                         <span className="text-text">{item}</span>

@@ -1,4 +1,3 @@
-// Create components/ContactForm.tsx
 "use client";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -14,7 +13,16 @@ export const ContactForm = () => {
   return (
     <section className="py-20 bg-sections">
       <div className="container mx-auto px-4 max-w-md">
-        <h2 className="text-4xl font-bold mb-8 text-center">Get in Touch</h2>
+        <h2 className="text-4xl font-bold mb-4 text-center">Get in Touch</h2>
+        <p className="text-center mb-8 text-secondText">
+          Or email me directly at{" "}
+          <a
+            href="mailto:dominik.gadzina1@gmail.com"
+            className="text-accents hover:underline"
+          >
+            dominik.gadzina1@gmail.com
+          </a>
+        </p>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <motion.div whileHover={{ scale: 1.02 }}>
             <input

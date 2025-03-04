@@ -31,8 +31,8 @@ const Contact = () => {
               transition={{ delay: 0.2 }}
               className="text-xl text-secondText mb-12 max-w-prose mx-auto leading-relaxed"
             >
-              Whether you have a project in mind or just want to connect,
-              I'm always open to discussing new opportunities and creative ideas.
+              Whether you have a project in mind or just want to connect, I'm
+              always open to discussing new opportunities and creative ideas.
             </motion.p>
 
             <div className="flex flex-col items-center gap-8">
@@ -42,9 +42,11 @@ const Contact = () => {
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.98 }}
                 className={`px-8 py-4 rounded-xl font-medium flex items-center gap-3 
-                  ${theme === 'dark' 
-                    ? 'bg-accents text-background hover:bg-accents/90' 
-                    : 'bg-accents-dark text-background hover:bg-accents-dark/90'}
+                  ${
+                    theme === "dark"
+                      ? "bg-accents text-background hover:bg-accents/90"
+                      : "bg-accents-dark text-background hover:bg-accents-dark/90"
+                  }
                   transition-all shadow-lg hover:shadow-accents/20`}
               >
                 <FaPaperPlane className="animate-float" />
@@ -53,15 +55,20 @@ const Contact = () => {
 
               {/* Social Links */}
               <div className="flex flex-col items-center gap-4">
-                <p className={`text-sm ${
-                  theme === 'dark' ? 'text-secondText' : 'text-accents-dark'
-                }`}>
+                <p
+                  className={`text-sm ${
+                    theme === "dark" ? "text-secondText" : "text-accents-dark"
+                  }`}
+                >
                   Or find me on
                 </p>
                 <div className="flex gap-4">
                   {[
-                    { icon: <FaGithub />, href: "https://github.com" },
-                    { icon: <FaLinkedin />, href: "https://linkedin.com" }
+                    { icon: <FaGithub />, href: "https://github.com/Pum2A" },
+                    {
+                      icon: <FaLinkedin />,
+                      href: "https://linkedin.com/in/dominik-gadzina",
+                    },
                   ].map((social, i) => (
                     <motion.a
                       key={i}
@@ -71,11 +78,15 @@ const Contact = () => {
                       whileHover={{ y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       className={`p-4 rounded-xl flex items-center justify-center
-                        ${theme === 'dark' 
-                          ? 'bg-background text-secondText hover:text-accents border border-border' 
-                          : 'bg-sections text-accents-dark hover:text-accents-dark/80 border border-accents/20'}
+                        ${
+                          theme === "dark"
+                            ? "bg-background text-secondText hover:text-accents border border-border"
+                            : "bg-sections text-accents-dark hover:text-accents-dark/80 border border-accents/20"
+                        }
                         transition-colors shadow-sm`}
-                      aria-label={i === 0 ? "GitHub profile" : "LinkedIn profile"}
+                      aria-label={
+                        i === 0 ? "GitHub profile" : "LinkedIn profile"
+                      }
                     >
                       {social.icon}
                     </motion.a>
@@ -87,12 +98,16 @@ const Contact = () => {
         </div>
 
         {/* Decorative Elements */}
-        <div className={`absolute top-20 left-1/4 w-48 h-48 ${
-          theme === 'dark' ? 'bg-accents/10' : 'bg-accents-dark/10'
-        } blur-3xl -z-10`} />
-        <div className={`absolute bottom-10 right-1/4 w-32 h-32 ${
-          theme === 'dark' ? 'bg-accents/10' : 'bg-accents-dark/10'
-        } blur-3xl -z-10`} />
+        <div
+          className={`absolute top-20 left-1/4 w-48 h-48 ${
+            theme === "dark" ? "bg-accents/10" : "bg-accents-dark/10"
+          } blur-3xl -z-10`}
+        />
+        <div
+          className={`absolute bottom-10 right-1/4 w-32 h-32 ${
+            theme === "dark" ? "bg-accents/10" : "bg-accents-dark/10"
+          } blur-3xl -z-10`}
+        />
       </div>
     </section>
   );

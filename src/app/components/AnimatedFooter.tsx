@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaRegEnvelope } from "react-icons/fa";
 
 const footerLinks = [
-  { icon: <FaGithub />, href: "https://github.com" },
-  { icon: <FaLinkedin />, href: "https://linkedin.com" },
-  { icon: <FaRegEnvelope />, href: "mailto:contact@example.com" },
+  { icon: <FaGithub />, href: "https://github.com/Pum2A" },
+  { icon: <FaLinkedin />, href: "https://linkedin.com/in/dominik-gadzina" },
+  { icon: <FaRegEnvelope />, href: "mailto:dominik.gadzina1@gmail.com" },
 ];
 
 const AnimatedFooter = () => {

@@ -6,11 +6,11 @@ import { useTheme } from "./ThemeProvider";
 
 const skills = [
   { name: "TypeScript", level: 95 },
-  { name: "React", level: 90 },
-  { name: "Node.js", level: 85 },
-  { name: "GraphQL", level: 80 },
-  { name: "AWS", level: 75 },
-  { name: "Docker", level: 70 },
+  { name: "NextJS", level: 90 },
+  { name: "JavaScript", level: 85 },
+  { name: "TailwindCSS", level: 80 },
+  { name: "SCSS", level: 75 },
+  { name: "SQL", level: 70 },
 ];
 
 export const SkillBar = ({ name, level }: { name: string; level: number }) => {
@@ -30,9 +30,9 @@ export const SkillBar = ({ name, level }: { name: string; level: number }) => {
           animate={inView ? { width: `${level}%` } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
           className={`h-full rounded-full ${
-            theme === 'dark' 
-              ? 'bg-gradient-to-r from-accents to-accents/70'
-              : 'bg-gradient-to-r from-accents to-accents-dark'
+            theme === "dark"
+              ? "bg-gradient-to-r from-accents to-accents/70"
+              : "bg-gradient-to-r from-accents to-accents-dark"
           }`}
         />
       </div>
@@ -44,7 +44,7 @@ export const SkillsCloud = () => {
   return (
     <section className="py-20 bg-sections">
       <div className="container mx-auto px-4 max-w-2xl">
-        <motion.h3 
+        <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

@@ -3,13 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaBars,
+  FaTimes,
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 
 // Removed navigation links
 const socials = [
-  { icon: <FaGithub />, href: "https://github.com" },
-  { icon: <FaLinkedin />, href: "https://linkedin.com" },
+  { icon: <FaGithub />, href: "https://github.com/Pum2A" },
+  { icon: <FaLinkedin />, href: "https://linkedin.com/in/dominik-gadzina" },
 ];
 
 const Topbar = () => {
