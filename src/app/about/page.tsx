@@ -72,13 +72,13 @@ const About = () => {
 
                 <div className="space-y-6">
                   <p className="text-xl text-secondText leading-relaxed">
-                    With over{" "}
+                    With{" "}
                     <span
                       className={`${
                         theme === "dark" ? "text-accents" : "text-accents-dark"
                       }`}
                     >
-                      5 years
+                      passionate
                     </span>{" "}
                     of transforming ideas into immersive digital experiences, I
                     specialize in building:
