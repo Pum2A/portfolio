@@ -1,4 +1,4 @@
-Portfolio link: https://dominikg.vercel.app/
+Portfolio link: https://dominikgadzina.vercel.app/
 
 # My Portfolio Website
 
