@@ -14,9 +14,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Portfolio - Dominik Gadzina - Intern Frontend Developer",
+  title: "Portfolio - DG - Intern Frontend Developer",
   description:
-    "Cześć! Nazywam się Dominik Gadzina i tworzę nowoczesne aplikacje webowe z wykorzystaniem React, Next.js i .NET. Zobacz moje projekty i umiejętności.",
+    "Cześć! Nazywam się DG i tworzę nowoczesne aplikacje webowe z wykorzystaniem React, Next.js i .NET. Zobacz moje projekty i umiejętności.",
   keywords: [
     "portfolio",
     "programista",
@@ -27,10 +27,10 @@ export const metadata = {
     "React",
     "developer",
     "fullstack",
-    "Dominik Gadzina",
+    "DG",
   ],
-  authors: [{ name: "Dominik Gadzina" }],
-  creator: "Dominik Gadzina",
+  authors: [{ name: "DG" }],
+  creator: "DG",
   robots: "index, follow",
 };
 
