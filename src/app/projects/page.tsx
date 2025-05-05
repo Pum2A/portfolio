@@ -11,7 +11,7 @@ const projects = [
     tech: ["Next.js", "TasilwindCSS", ".NET", "shadcn"],
     description:
       "Full-stack application with .NET where you can learn Data Structures and Algorithms",
-    image: "/dsa.PNG",
+    image: "/dsa.png",
     link: "https://dsa-frontend-nextjs-pkh4.vercel.app/",
     github: "https://github.com/Pum2A/DSA",
   },
