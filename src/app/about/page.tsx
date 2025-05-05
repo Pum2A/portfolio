@@ -1,7 +1,6 @@
 // components/About.tsx
 "use client";
 import { motion } from "framer-motion";
-import Avatar from "../components/Avatar";
 import { useTheme } from "../components/ThemeProvider";
 
 const About = () => {
@@ -25,32 +24,6 @@ const About = () => {
           className="max-w-7xl mx-auto"
         >
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <motion.div
-              initial={{ x: -100, opacity: 0, rotate: -5 }}
-              animate={{ x: 0, opacity: 1, rotate: 0 }}
-              transition={{ duration: 0.6, type: "spring" }}
-              className="relative group flex-shrink-0 w-72 h-72"
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${
-                  theme === "dark" ? "from-accents/30" : "from-accents-dark/30"
-                } to-transparent rounded-3xl transform rotate-12 scale-105 opacity-50 group-hover:opacity-70 transition-opacity`}
-              />
-              <div
-                className={`relative w-full h-full rounded-3xl overflow-hidden border-4 ${
-                  theme === "dark"
-                    ? "border-accents/20"
-                    : "border-accents-dark/20"
-                } hover:${
-                  theme === "dark"
-                    ? "border-accents/50"
-                    : "border-accents-dark/50"
-                } transition-all`}
-              >
-                <Avatar />
-              </div>
-            </motion.div>
-
             <div className="flex-1 space-y-8">
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
