@@ -1,4 +1,5 @@
 // app/layout.tsx
+import { Analytics } from "@vercel/analytics/next";
 import { Montserrat } from "next/font/google";
 import { ReactNode } from "react";
 import { AnimatedCursor } from "./components/AnimatedCursor";
@@ -42,7 +43,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <div className="min-h-screen flex flex-col">
             <Topbar />
-            <main className="flex-1 flex flex-col">{children}</main>
+            <main className="flex-1 flex flex-col">
+              {children}
+              <Analytics />
+            </main>
             <AnimatedFooter />
             <ContextMenu />
           </div>
