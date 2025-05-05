@@ -1,11 +1,11 @@
 // app/page.tsx
 import About from "./about/page";
-import {Hero} from "./components/Hero";
+import { Hero } from "./components/Hero";
 import PageTransition from "./components/PageTransition";
-import {SkillsCloud} from "./components/SkillsCloud";
-import Projects from "./projects/page";
-import {TimeLine} from "./components/Timeline";
+import { SkillsCloud } from "./components/SkillsCloud";
+import { TimeLine } from "./components/Timeline";
 import Contact from "./contact/page";
+import Projects from "./projects/page";
 export default function Home() {
   return (
     <PageTransition>
@@ -14,7 +14,7 @@ export default function Home() {
         <About />
         <SkillsCloud />
         <Projects />
-        <TimeLine/>
+        <TimeLine />
         <Contact /> {/* Add Contact as full-width section */}
       </div>
     </PageTransition>

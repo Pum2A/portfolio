@@ -1,8 +1,9 @@
-// components/Contact.tsx
 "use client";
+
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 import { useTheme } from "../components/ThemeProvider";
+
 const Contact = () => {
   const { theme } = useTheme();
 

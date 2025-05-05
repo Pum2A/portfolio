@@ -1,18 +1,13 @@
-// components/Hero.tsx (Enhanced)
 "use client";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere } from "@react-three/drei";
 import { useTheme } from "./ThemeProvider";
-import Avatar from "./Avatar";
 
 export const Hero = () => {
   const { theme } = useTheme();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-sections overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 h-full w-full z-0 opacity-15"></div>
+      {/* Tło usunięte z Canvas dla lepszego LCP */}
 
       <motion.div
         className="relative z-10 text-center space-y-8 px-4"
@@ -25,13 +20,13 @@ export const Hero = () => {
           animate={{ scale: 1 }}
           className="inline-block bg-accents/10 px-6 py-2 rounded-full mb-4"
         >
-          <span className="text-accents text-sm">🚀 Available for work</span>
+          <span className="text-accents text-sm">🚀 Open to work</span>
         </motion.div>
 
         <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-text to-accents bg-clip-text text-transparent">
-          Digital Innovation
+          Building Digital Futures
           <span className="block mt-4 bg-gradient-to-r from-accents to-accents-dark bg-clip-text text-transparent">
-            Perfected
+            One Pixel at a Time
           </span>
         </h1>
 
@@ -41,14 +36,14 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-xl md:text-2xl text-secondText max-w-3xl mx-auto leading-relaxed"
         >
-          Crafting <span className="text-accents">next-generation</span> web
-          experiences with cutting-edge technology and pixel-perfect design
+          I create <span className="text-accents">modern, performant</span> web
+          experiences using cutting-edge tools and clean design principles.
         </motion.p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center"></div>
+        {/* Możesz dodać CTA tutaj */}
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator (ok, ale możesz też usunąć dla LCP testu) */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 20, 0] }}

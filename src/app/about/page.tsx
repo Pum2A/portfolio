@@ -1,8 +1,8 @@
 // components/About.tsx
 "use client";
 import { motion } from "framer-motion";
-import { useTheme } from "../components/ThemeProvider";
 import Avatar from "../components/Avatar";
+import { useTheme } from "../components/ThemeProvider";
 
 const About = () => {
   const { theme } = useTheme();
@@ -25,7 +25,6 @@ const About = () => {
           className="max-w-7xl mx-auto"
         >
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            {/* 3D Avatar Container */}
             <motion.div
               initial={{ x: -100, opacity: 0, rotate: -5 }}
               animate={{ x: 0, opacity: 1, rotate: 0 }}
@@ -52,7 +51,6 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Content Section */}
             <div className="flex-1 space-y-8">
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
@@ -110,7 +108,6 @@ const About = () => {
                 </div>
               </motion.div>
 
-              {/* Skills Grid */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -154,7 +151,6 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Decorative Elements */}
         <div
           className={`absolute top-20 left-0 w-48 h-48 ${
             theme === "dark" ? "bg-accents/10" : "bg-accents-dark/10"

@@ -1,15 +1,15 @@
 // components/Topbar.tsx
 "use client";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import {
+  FaBars,
   FaGithub,
   FaLinkedin,
-  FaBars,
-  FaTimes,
   FaMoon,
   FaSun,
+  FaTimes,
 } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 

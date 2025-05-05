@@ -50,7 +50,7 @@ export const SkillsCloud = () => {
           transition={{ duration: 0.5 }}
           className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-text to-secondText bg-clip-text text-transparent"
         >
-          Technical Expertise
+          My Tech Stack & Skills
         </motion.h3>
         <div className="space-y-8">
           {skills.map((skill) => (
