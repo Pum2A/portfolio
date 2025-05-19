@@ -1,4 +1,3 @@
-// components/Projects.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,9 +7,9 @@ import { useTheme } from "../components/ThemeProvider";
 const projects = [
   {
     title: "DSA",
-    tech: ["Next.js", "TasilwindCSS", ".NET", "shadcn"],
+    tech: ["Next.js", "TailwindCSS", ".NET", "shadcn"],
     description:
-      "Full-stack application with .NET where you can learn Data Structures and Algorithms",
+      "Full-stack application with .NET where you can learn Data Structures and Algorithms.",
     image: "/dsa.png",
     link: "https://dsa-frontend-nextjs-pkh4.vercel.app/",
     github: "https://github.com/Pum2A/DSA",
@@ -18,7 +17,7 @@ const projects = [
   {
     title: "Booking Application",
     tech: ["Next.js", "TailwindCSS", "Prisma", "shadcn"],
-    description: "Full-stack real-time booking platform",
+    description: "Full-stack real-time booking platform.",
     image: "/bookingapp.PNG",
     link: "https://bookingfullstack.vercel.app",
     github: "https://github.com/Pum2A/bookingappfront",
@@ -26,7 +25,7 @@ const projects = [
   {
     title: "Foodify",
     tech: ["Next.js", "TailwindCSS", "Firebase", "TypeScript"],
-    description: "AI-powered recipe generator",
+    description: "AI-powered recipe generator.",
     image: "/foodify.PNG",
     link: "https://my-recipe-app-eta.vercel.app",
     github: "https://github.com/Pum2A/Foodify",
@@ -34,52 +33,70 @@ const projects = [
   {
     title: "React Crypto",
     tech: ["React", "JavaScript", "CSS", "Cryptocurrency"],
-    description: "Web application focused on cryptocurrency tracking",
+    description: "Web application focused on cryptocurrency tracking.",
     image: "/crypto.PNG",
     link: "https://pum2a.github.io/react-crypto/",
     github: "https://github.com/Pum2A/react-crypto",
   },
 ];
 
+const bgGradient = [
+  // animated background gradient for the section
+  "absolute",
+  "inset-0",
+  "-z-10",
+  "opacity-80",
+  "pointer-events-none",
+  "bg-gradient-to-br",
+  "from-accents/10",
+  "via-background/80",
+  "to-accents-dark/20",
+  "blur-2xl",
+  "rounded-3xl",
+].join(" ");
+
 const Projects = () => {
   const { theme } = useTheme();
 
   return (
-    <section className="relative py-20 bg-background">
+    <section className="relative py-20 bg-background overflow-x-clip">
+      {/* Decorative blurred background for extra depth */}
+      <div className={bgGradient} />
+
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-accents to-accents-dark bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-extrabold mb-14 text-center bg-gradient-to-r from-accents via-accents-dark to-accents bg-clip-text text-transparent drop-shadow-lg"
         >
           Featured Projects
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, i) => (
             <motion.article
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl bg-sections hover:shadow-xl transition-shadow duration-300 border border-border"
+              transition={{ delay: i * 0.1, type: "spring", stiffness: 120 }}
+              className="group relative overflow-hidden rounded-3xl shadow-lg bg-gradient-to-br from-sections/90 via-background/70 to-sections/80 hover:shadow-2xl transition-shadow duration-300 border border-border backdrop-blur-xl"
             >
-              <div className="relative h-64">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={`Screenshot of ${project.title}`}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   priority={i < 3}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
               </div>
 
-              <div className="p-6 space-y-4">
+              <div className="p-6 space-y-5">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold text-text">
+                  <h3 className="text-2xl font-bold text-text drop-shadow-sm transition-colors">
                     {project.title}
                   </h3>
                   <div className="flex gap-2">
@@ -87,8 +104,8 @@ const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ y: -2 }}
-                      className="p-2 text-secondText hover:text-accents transition-colors"
+                      whileHover={{ y: -2, scale: 1.12 }}
+                      className="p-2 rounded-full text-secondText hover:bg-accents/10 hover:text-accents transition-colors focus:ring-2 focus:ring-accents focus:outline-none"
                       aria-label={`Visit ${project.title} live demo`}
                     >
                       ↗
@@ -97,8 +114,8 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ y: -2 }}
-                      className="p-2 text-secondText hover:text-accents transition-colors"
+                      whileHover={{ y: -2, scale: 1.12 }}
+                      className="p-2 rounded-full text-secondText hover:bg-accents/10 hover:text-accents transition-colors focus:ring-2 focus:ring-accents focus:outline-none"
                       aria-label={`View ${project.title} on GitHub`}
                     >
                       <svg
@@ -128,7 +145,7 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <p className="text-secondText min-h-[60px]">
+                <p className="text-secondText min-h-[60px] font-medium">
                   {project.description}
                 </p>
 
@@ -136,12 +153,12 @@ const Projects = () => {
                   {project.tech.map((tech: string) => (
                     <motion.span
                       key={tech}
-                      whileHover={{ y: -2 }}
-                      className={`px-3 py-1 text-sm rounded-full ${
+                      whileHover={{ y: -2, scale: 1.08 }}
+                      className={`relative px-3 py-1 text-sm font-semibold rounded-full shadow-sm border transition-colors duration-200 ${
                         theme === "dark"
-                          ? "bg-accents/10 text-accents"
-                          : "bg-accents-dark/10 text-accents-dark"
-                      }`}
+                          ? "bg-gradient-to-r from-accents/20 via-background/60 to-accents-dark/20 text-accents border-accents/30"
+                          : "bg-gradient-to-r from-accents-dark/10 via-background/80 to-accents/10 text-accents-dark border-accents-dark/30"
+                      } before:absolute before:-z-10 before:inset-0 before:rounded-full before:blur before:bg-accents/10`}
                     >
                       {tech}
                     </motion.span>
@@ -149,9 +166,12 @@ const Projects = () => {
                 </div>
               </div>
 
+              {/* Subtle animated gradient on hover for a lively effect */}
               <motion.div
-                className="absolute inset-0 -z-10 bg-gradient-to-r from-accents/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 -z-10 bg-gradient-to-br from-accents/5 via-transparent to-accents-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               />
             </motion.article>
           ))}
