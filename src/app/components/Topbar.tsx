@@ -12,13 +12,13 @@ import {
 } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 
-// Navigation sections for the SPA
+// UPDATED: Navigation sections properly ordered
 const navSections = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "timeline", label: "Journey" },
+  { id: "journey", label: "Journey" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -35,70 +35,162 @@ const socials = [
   },
 ];
 
+// Define proper types for section elements
+interface SectionPosition {
+  id: string;
+  top: number;
+  bottom: number;
+  height: number;
+}
+
 const Topbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { scrollY } = useScroll();
+  // State to track if components are ready
+  const [isReady, setIsReady] = useState(false);
 
   // Track scroll position and determine active section
   useEffect(() => {
+    // Wait for components to fully render before activating scroll detection
+    const readyTimer = setTimeout(() => {
+      setIsReady(true);
+    }, 500);
+
     const handleScroll = () => {
+      if (!isReady) return;
+
       // Update navbar style when scrolled
       setScrolled(window.scrollY > 20);
 
-      // Find active section
-      const sections = navSections.map((section) => section.id);
-      let currentSection = sections[0];
-
-      sections.forEach((sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (!element) return;
+      // Get all section elements and their positions
+      const sectionElements: SectionPosition[] = navSections.map((section) => {
+        const element = document.getElementById(section.id);
+        if (!element) return { id: section.id, top: 0, bottom: 0, height: 0 };
 
         const rect = element.getBoundingClientRect();
-        // Consider a section active when its top is near viewport top
-        // Adjusted to account for navbar height and section padding
-        if (rect.top <= 150 && rect.bottom > 0) {
-          currentSection = sectionId;
-        }
+        return {
+          id: section.id,
+          top: rect.top + window.scrollY,
+          bottom: rect.top + rect.height + window.scrollY,
+          height: rect.height,
+        };
       });
 
-      setActiveSection(currentSection);
+      // Calculate current scroll position with offset for navbar
+      const scrollPosition = window.scrollY + 100; // Adding offset for navbar height
+
+      // Find the active section (the one we're currently scrolled to)
+      let active = "home"; // Default to home
+
+      // Find section that contains current scroll position
+      const currentSection = sectionElements.find(
+        (section) =>
+          scrollPosition >= section.top && scrollPosition < section.bottom
+      );
+
+      if (currentSection) {
+        active = currentSection.id;
+      } else {
+        // If no section contains current position, find nearest section
+        // First check if we're past the last section
+        const lastSection = sectionElements[sectionElements.length - 1];
+        if (lastSection && scrollPosition >= lastSection.bottom - 100) {
+          active = lastSection.id;
+        } else {
+          // Otherwise find nearest section by distance from middle
+          let nearestSection: SectionPosition | null = null;
+          let minDistance = Infinity;
+
+          sectionElements.forEach((section) => {
+            // Calculate distance to middle of section
+            const middleOfSection = section.top + section.height / 2;
+            const distance = Math.abs(scrollPosition - middleOfSection);
+
+            if (distance < minDistance) {
+              minDistance = distance;
+              nearestSection = section;
+            }
+          });
+
+          if (nearestSection) {
+            active = (nearestSection as SectionPosition).id;
+          }
+        }
+      }
+
+      // Special handling for journey section
+      const journeySection = document.getElementById("journey");
+      if (journeySection) {
+        const journeyRect = journeySection.getBoundingClientRect();
+        const journeyTop = journeyRect.top + window.scrollY;
+        const journeyBottom = journeyTop + journeyRect.height;
+
+        // More aggressive detection for journey section
+        if (
+          scrollPosition + 200 >= journeyTop &&
+          scrollPosition - 200 <= journeyBottom
+        ) {
+          active = "journey";
+        }
+      }
+
+      // Special case for contact section at bottom of page
+      const contactElement = document.getElementById("contact");
+      if (contactElement) {
+        const bottomScrollThreshold =
+          document.documentElement.scrollHeight - window.innerHeight - 50;
+        if (window.scrollY >= bottomScrollThreshold) {
+          active = "contact";
+        }
+      }
+
+      setActiveSection(active);
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Call once to set initial state
-    handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Call immediately after a small delay to set initial state once DOM is ready
+    const initialTimer = setTimeout(() => {
+      handleScroll();
+    }, 100);
 
-  // Smooth scroll to section - fixed for mobile
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(readyTimer);
+      clearTimeout(initialTimer);
+    };
+  }, [isReady]);
+
+  // Smooth scroll to section with better handling
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
   ) => {
     e.preventDefault();
 
-    // First close the mobile menu and then scroll with a small delay
+    // First close mobile menu
     setIsOpen(false);
 
-    // Use setTimeout to ensure the menu animation completes before scrolling
+    // Set active section immediately for better feedback
+    setActiveSection(sectionId);
+
+    // Scroll to section after a small delay
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        const headerOffset = 80; // Adjust based on your navbar height
+        const headerOffset = 80; // Adjust based on navbar height
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
       }
-    }, 100); // Small delay to ensure menu closing animation starts
+    }, 100);
   };
 
   return (
